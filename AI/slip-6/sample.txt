@@ -1,0 +1,1 @@
+This is a simple example sentence that contains several stop words. The goal is to demonstrate how to remove these words effectively using Python and the NLTK library.
