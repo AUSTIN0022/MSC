@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Tracker</title>
+</head>
+<body>
+    <h1>Number Tracker</h1>
+    <!-- Form to add and clear numbers -->
+    <form method="POST" action="/">
+        <input type="text" name="number" placeholder="Enter a number" required>
+        <button type="submit" name="add">Add Number</button>
+        <button type="submit" name="clear">Clear Numbers</button>
+    </form>
+    
+    <!-- Display message if any -->
+    <p>{{ message }}</p>
+    
+    <!-- Display list of numbers -->
+   
+    <p>
+        Number: 
+        {% for num in numbers %}
+            {{ num }}, &nbsp;
+        {% endfor %}
+    </p>
+    
+    <!-- Links to different routes -->
+    <h2>Operations</h2>
+    <ul>
+        <li><a href="/max">Find Maximum</a></li>
+        <li><a href="/sum">Find Sum</a></li>
+        <li><a href="/average">Find Average</a></li>
+    </ul>
+    
+    <!-- Form to calculate factorial -->
+    <h2>Calculate Factorial</h2>
+    <form method="POST" action="/factorial">
+        <input type="text" name="number" placeholder="Enter a number for factorial" required>
+        <button type="submit">Get Factorial</button>
+    </form>
+</body>
+</html>
