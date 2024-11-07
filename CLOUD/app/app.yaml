@@ -1,0 +1,9 @@
+runtime: python39
+entrypoint: gunicorn -b :$PORT app:app
+
+instance_class: F1 
+
+automatic_scaling:
+  max_instances: 1  # Limit to one instance to avoid extra charges
+  min_idle_instances: 0  # Keep no idle instances to minimize usage
+  max_idle_instances: 1  # Only spin up instances when needed
