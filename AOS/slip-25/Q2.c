@@ -1,26 +1,42 @@
 #include <stdio.h>
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>    
+#include <stdlib.h>    
 
 int main() {
-    int fd;
-
-    // Open the file "output.txt" for writing, create it if it doesn't exist
-    fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 077);
-    if (fd < 0) {
-        perror("open");
-        return 1;
+    
+    int original_stdout = dup(STDOUT_FILENO);
+    if (original_stdout == -1) {
+        perror("dup");
+        exit(1);
     }
 
-    // Duplicate the file descriptor fd to stdout (file descriptor 1)
-    dup2(fd, STDOUT_FILENO);
+    int file_fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (file_fd == -1) {
+        perror("open");
+        exit(1);
+    }
 
-    // Now any printf statements will write to "output.txt"
-    printf("This output is redirected to 'output.txt'.\n");
-    printf("Using dup and open system calls to redirect stdout.\n");
+    if (dup2(file_fd, STDOUT_FILENO) == -1) {
+        perror("dup2");
+        close(file_fd);
+        exit(1);
+    }
 
-    // Close the file descriptor
-    close(fd);
+    printf("This text will be written to output.txt\n");
+    printf("This is another line that goes to the file\n");
 
+    // Flush the stdout buffer
+    fflush(stdout);
+
+    if (dup2(original_stdout, STDOUT_FILENO) == -1) {
+        perror("dup2");
+        exit(1);
+    }
+
+    close(file_fd);
+    close(original_stdout);
+
+    printf("Back to printing to console!\n");
     return 0;
 }
