@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Registration</title>
+    <style>
+        .error { color: red; display: none; }
+        .form-group { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <form id="employeeForm" >
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+            <span id="dobError" class="error">You must be at least 18 years old</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="joinDate">Joining Date:</label>
+            <input type="date" id="joinDate" name="joinDate">
+            <span id="joinDateError" class="error">Joining date must be after DOB and not in future</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="salary">Salary:</label>
+            <input type="number" id="salary" name="salary" step="0.01">
+            <span id="salaryError" class="error">Salary must be between 10000 and 500000</span>
+        </div>
+        
+        <button type="submit" onclick="validateForm(event)">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+            const today = new Date();
+            
+            // DOB validation
+            const dob = new Date(document.getElementById('dob').value);
+            const dobError = document.getElementById('dobError');
+            const age = today.getFullYear() - dob.getFullYear();
+            if (age < 18 || isNaN(dob.getTime())) {
+                dobError.style.display = 'block';
+                isValid = false;
+            } else {
+                dobError.style.display = 'none';
+            }
+            
+            // Joining Date validation
+            const joinDate = new Date(document.getElementById('joinDate').value);
+            const joinDateError = document.getElementById('joinDateError');
+            if (joinDate <= dob || joinDate > today || isNaN(joinDate.getTime())) {
+                joinDateError.style.display = 'block';
+                isValid = false;
+            } else {
+                joinDateError.style.display = 'none';
+            }
+            
+            // Salary validation
+            const salary = parseFloat(document.getElementById('salary').value);
+            const salaryError = document.getElementById('salaryError');
+            if (salary < 10000 || salary > 500000 || isNaN(salary)) {
+                salaryError.style.display = 'block';
+                isValid = false;
+            } else {
+                salaryError.style.display = 'none';
+            }
+            
+            if(!isValid) {
+                event.preventDefault();
+            } else {
+                alert("Employee Login Success");
+            }
+        }
+    </script>
+</body>
+</html>

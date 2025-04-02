@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Form</title>
+    <style>
+        .error { color: red; display: none; }
+        .form-group { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <form id="employeeForm" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <span id="nameError" class="error">Name should contain only alphabets</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email ID:</label>
+            <input type="text" id="email" name="email">
+            <span id="emailError" class="error">Please enter a valid email address</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile">
+            <span id="mobileError" class="error">Please enter a valid 10-digit mobile number</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select id="department" name="department">
+                <option value="">Select Department</option>
+                <option value="it">IT</option>
+                <option value="hr">HR</option>
+                <option value="finance">Finance</option>
+                <option value="marketing">Marketing</option>
+            </select>
+            <span id="departmentError" class="error">Please select a department</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="joinDate">Joining Date:</label>
+            <input type="date" id="joinDate" name="joinDate">
+            <span id="joinDateError" class="error">Joining date cannot be in future</span>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+            const nameRegex = /^[A-Za-z\s]+$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const mobileRegex = /^[0-9]{10}$/;
+            
+            // Name validation
+            const name = document.getElementById('name').value;
+            const nameError = document.getElementById('nameError');
+            if (!nameRegex.test(name)) {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+            
+            // Email validation
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            if (!emailRegex.test(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            // Mobile validation
+            const mobile = document.getElementById('mobile').value;
+            const mobileError = document.getElementById('mobileError');
+            if (!mobileRegex.test(mobile)) {
+                mobileError.style.display = 'block';
+                isValid = false;
+            } else {
+                mobileError.style.display = 'none';
+            }
+
+            // Department validation
+            const department = document.getElementById('department').value;
+            const departmentError = document.getElementById('departmentError');
+            if (department === "") {
+                departmentError.style.display = 'block';
+                isValid = false;
+            } else {
+                departmentError.style.display = 'none';
+            }
+
+            // Joining Date validation
+            const joinDate = document.getElementById('joinDate').value;
+            const joinDateError = document.getElementById('joinDateError');
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            if (joinDate === "" || joinDate > today) {
+                joinDateError.style.display = 'block';
+                isValid = false;
+            } else {
+                joinDateError.style.display = 'none';
+            }
+
+            return isValid; // Prevents form submission if validation fails
+        }
+    </script>
+</body>
+</html>
+            

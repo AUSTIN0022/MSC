@@ -1,0 +1,28 @@
+<div class="form-container" ng-controller="StudentController">
+    
+    <!-- Greeting Message -->
+    <div class="greeting" ng-show="greeting">{{ greeting }}, Welcome!</div>
+
+    <form name="studentForm" ng-submit="submitForm()" novalidate>
+
+        <!-- First Name -->
+        <label>First Name:</label>
+        <input type="text" name="firstName" ng-model="student.firstName" ng-change="validateName('first')" required>
+        <span class="error" ng-show="firstNameMessage">{{ firstNameMessage }}</span>
+        <br><br>
+
+        <!-- Last Name -->
+        <label>Last Name:</label>
+        <input type="text" name="lastName" ng-model="student.lastName" ng-change="validateName('last')" required>
+        <span class="error" ng-show="lastNameMessage">{{ lastNameMessage }}</span>
+        <br><br>
+
+        <!-- Age -->
+        <label>Age:</label>
+        <input type="number" name="age" ng-model="student.age" ng-change="validateAge()" required>
+        <span class="error" ng-show="ageMessage">{{ ageMessage }}</span>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

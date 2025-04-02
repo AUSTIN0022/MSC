@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File</title>
+</head>
+<body>
+    <h2>Download a File</h2>
+    <label for="filename">Enter File name:</label>
+    <input name="filename" id="filename" type="text" placeholder="sample.txt" required />
+    <button onclick="downloadFile()">Download</button>
+
+    <script>
+        function downloadFile() {
+            const filename = document.getElementById('filename').value.trim();
+            
+            if (!filename) {
+                alert("Please enter a filename.");
+                return;
+            }
+
+            const userConfirmed = confirm(`Do you want to download the file "${filename}"?`);
+            if (userConfirmed) {
+                window.location.href = `/download/${filename}`;
+            }
+        }
+    </script>
+</body>
+</html>

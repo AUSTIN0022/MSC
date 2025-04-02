@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.Sc (CS) Semester-II Syllabus</title>
+    <!-- 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script> 
+    -->
+    <script src="/angular.min.js"></script>
+    <script src="/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .menu {
+            margin-bottom: 20px;
+        }
+        .menu a {
+            padding: 10px;
+            font-size: small;
+            text-decoration: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+            margin: 0px 0px 10px 10px;
+            display: inline-block;
+        }
+        .menu a:hover {
+            background: #0056b3;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px #aaa;
+        }
+    </style>
+</head>
+<body ng-app="syllabusApp">
+
+    <h1>M.Sc (CS) Semester-II Syllabus</h1>
+
+    <!-- Navigation Menu -->
+    <div class="menu">
+        <a href="#!daa">Design and Analysis of Algorithms</a>
+        <a href="#!mad"> Mobile App Development</a>
+        <a href="#!spm">Software Project Management</a>
+        <a href="#!fsd">Full Stack Development-I</a>
+        <a href="#!cloud">Cloud Computing</a>
+    </div>
+
+    <!-- Content Area (ng-view) -->
+    <div class="content" ng-view></div>
+
+</body>
+</html>

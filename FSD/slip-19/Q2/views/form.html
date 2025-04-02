@@ -1,0 +1,30 @@
+<div class="form-container" ng-controller="FormController">
+    <form name="userForm" ng-submit="submitForm()" novalidate>
+        
+        <!-- Name -->
+        <label>Name:</label>
+        <input type="text" name="name" ng-model="user.name" required pattern="^[A-Za-z ]+$">
+        <span class="error" ng-show="userForm.name.$dirty && userForm.name.$invalid">Only alphabets allowed.</span>
+        <br><br>
+
+        <!-- Mobile Number -->
+        <label>Mobile Number:</label>
+        <input type="text" name="mobile" ng-model="user.mobile" required pattern="^\d{10}$">
+        <span class="error" ng-show="userForm.mobile.$dirty && userForm.mobile.$invalid">Must be exactly 10 digits.</span>
+        <br><br>
+
+        <!-- Pin Code -->
+        <label>Pin Code:</label>
+        <input type="text" name="pincode" ng-model="user.pincode" required pattern="^\d{6}$">
+        <span class="error" ng-show="userForm.pincode.$dirty && userForm.pincode.$invalid">Must be exactly 6 digits.</span>
+        <br><br>
+
+        <!-- Email -->
+        <label>Email:</label>
+        <input type="email" name="email" ng-model="user.email" required>
+        <span class="error" ng-show="userForm.email.$dirty && userForm.email.$invalid">Invalid email format.</span>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Current Page Location</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="locationApp" ng-controller="locationController">
+
+    <h2>Current Page URL:</h2>
+    <p>{{ currentUrl }}</p>
+
+    <script>
+        var app = angular.module('locationApp', []);
+
+        app.controller('locationController', function($scope, $location) {
+            // Get the current URL
+            $scope.currentUrl = $location.absUrl();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Current Date & Time</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="timeApp" ng-controller="timeController">
+
+    <h2>Current Date & Time:</h2>
+    <p>{{ currentTime }}</p>
+
+    <script>
+        var app = angular.module('timeApp', []);
+
+        app.controller('timeController', function($scope, $interval) {
+            // Function to update time
+            var updateTime = function() {
+                $scope.currentTime = new Date().toLocaleString();
+            };
+
+            // Update time every second
+            $interval(updateTime, 1000);
+
+            // Initialize with current time
+            updateTime();
+        });
+    </script>
+
+</body>
+</html>

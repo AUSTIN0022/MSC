@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Student Table</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body ng-app="studentApp" ng-controller="studentController">
+
+    <h2>Student Details</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="student in students">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.course }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var app = angular.module('studentApp', []);
+
+        app.controller('studentController', function($scope) {
+            
+            $scope.students = [
+                { id: 1, name: 'Austin Makasare', age: 20, course: 'Computer Science' },
+                { id: 2, name: 'Naufil Shah', age: 22, course: 'Mathematics' },
+                { id: 3, name: 'Nyaz Ansari', age: 19, course: 'Physics' },
+                { id: 4, name: 'Shweta kale', age: 21, course: 'Chemistry' },
+                { id: 5, name: 'Anjali Pagar', age: 23, course: 'Biology' },
+                { id: 6, name: 'Rucha Shirke', age: 20, course: 'English' },
+                { id: 7, name: 'Devyani Nagare', age: 18, course: 'History' },
+                { id: 8, name: 'Sejal Phalak', age: 22, course: 'Economics' },
+                { id: 9, name: 'Yoesh Savala', age: 19, course: 'Engineering' },
+                { id: 10, name: 'Bhagyashree Mudliar', age: 21, course: 'Magic' }
+            ];
+        });
+    </script>
+
+</body>
+</html>
