@@ -1,6 +1,4 @@
-package slip-4;
-
-public package com.example.imageswitcher;
+package com.example.imageswitcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -78,6 +76,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-} {
-    
-}
+} 
