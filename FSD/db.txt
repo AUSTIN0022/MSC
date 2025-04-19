@@ -1,0 +1,15 @@
+  CREATE TABLE IF NOT EXISTS movies (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(100) NOT NULL,
+        director VARCHAR(100) NOT NULL,
+        release_year INT NOT NULL,
+        genre VARCHAR(50)
+    )
+
+
+INSERT INTO movies (title, director, release_year, genre) VALUES
+('Inception', 'Christopher Nolan', 2010, 'Sci-Fi'),
+('The Godfather', 'Francis Ford Coppola', 1972, 'Crime'),
+('Pulp Fiction', 'Quentin Tarantino', 1994, 'Crime'),
+('The Shawshank Redemption', 'Frank Darabont', 1994, 'Drama'),
+('The Dark Knight', 'Christopher Nolan', 2008, 'Action');
